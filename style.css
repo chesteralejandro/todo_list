@@ -7,7 +7,8 @@
     letter-spacing: 1.3px;
 }
 body {
-    background: linear-gradient(to right, lightslategrey, gray);
+    height: 100vh;
+    background: linear-gradient(to top right, #845EC2, #2C73D2, #0081CF, #0089BA, #008E9B, #008F7A);
 }
 i {
     font-size: 1.2rem;
@@ -28,10 +29,11 @@ i {
 }
 .todo {
     width: 60%;
+    min-width: 450px;
     margin: auto;
 }
 .todo__header {
-    color: lightgreen;
+    color: #4FFBDF;
     text-align: center;
     font-size: 3rem;
     margin: 2rem;
@@ -50,6 +52,7 @@ i {
 }
 .todo__text, .todo__input {
     flex: 1;
+    outline: none;
 }
 .todo__area {
     margin: 2rem 0;
