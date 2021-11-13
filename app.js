@@ -13,7 +13,7 @@ $(document).ready(function() {
     function list() {
         if(input.value === "") return;
         const div = document.createElement('div');
-        div.className = "todo__list animate__animated animate__rotateInDownRight";
+        div.className = "todo__list animate__animated animate__rubberBand";
         div.innerHTML = `
             <p class="todo__text">${input.value}</p>
             <button class="todo__button done">
@@ -37,19 +37,21 @@ $(document).ready(function() {
 
     // complete button
     $(document).on('click', 'button.done', function(e) {
-        if( e.target.checked == null) e.target.checked = false;
-        if(e.target.checked == false) {
+        if( e.target.isChecked == null) e.target.isChecked = false;
+        if(e.target.isChecked == false) {
             $(this).prev().css({
                                 'text-decoration': 'line-through',
-                                'color' : 'rgba(20, 20, 20, 0.5)'});
+                                'color' : 'rgba(20, 20, 20, 0.5)',
+                                'backdrop-filter' : 'blur(100px)'});
             $(this).parent().css('background', 'rgba(245, 245, 245, 0.6)');
-            e.target.checked = true;
+            e.target.isChecked = true;
         } else {
             $(this).prev().css({
-                'text-decoration': 'none',
-                'color' : 'rgba(20, 20, 20, 1)'});
+                                'text-decoration': 'none',
+                                'color' : 'rgba(20, 20, 20, 1)',
+                                'backdrop-filter' : 'blur(0px)'});
             $(this).parent().css('background', 'rgba(245, 245, 245, 1)');
-            e.target.checked = false;
+            e.target.isChecked = false;
         }
     });
 });
