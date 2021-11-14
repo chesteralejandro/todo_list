@@ -17,11 +17,16 @@
     <main class="todo">
         <h1 class="todo__header animate__animated animate__bounceInUp">List All Goals Today</h1>
         <div class="todo__form">
-            <input type="text" class="todo__input" placeholder="I am going to...">
+            <input type="text" class="todo__input" placeholder="I am going to..." maxlength="55">
             <button class="todo__submit submit">
                 <i class="fas fa-th-list"></i>
             </button>
         </div>
+        <select class="todo__filter" >
+            <option value="all" selected>SHOW ALL</option>
+            <option value="complete">SHOW COMPLETED</option>
+            <option value="working">SHOW WORKING ON</option>
+        </select>
         <section class="todo__area">
             <!-- <div class="todo__list">
                 <p class="todo__text">Support my mom.</p>
