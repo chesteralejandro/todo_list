@@ -67,21 +67,21 @@ $(document).ready(function() {
     });
 
     /*
-         complete button
+        complete button
     */
     $(document).on('click', 'button.done', function(e) {
         if(e.target.isChecked == null) e.target.isChecked = false;
         if(e.target.isChecked == false) {
             $(this).prev().css({
                                 'text-decoration': 'line-through',
-                                'color' : 'rgba(20, 20, 20, 0.5)'});
+                                'color': 'rgba(20, 20, 20, 0.5)'});
             $(this).parent().css('background', 'rgba(245, 245, 245, 0.6)');
             $(this).parent().removeClass('working').addClass('complete');
             e.target.isChecked = true;
         } else {
             $(this).prev().css({
                                 'text-decoration': 'none',
-                                'color' : 'rgba(20, 20, 20, 1)'});
+                                'color': 'rgba(20, 20, 20, 1)'});
             $(this).parent().css('background', 'rgba(245, 245, 245, 1)');
             $(this).parent().removeClass('complete').addClass('working');
             e.target.isChecked = false;
