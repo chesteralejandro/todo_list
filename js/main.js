@@ -20,10 +20,10 @@ $(document).ready(function () {
 		div.innerHTML = `
             <p class="todo__text">${todoInput.value}</p>
             <button class="todo__button done">
-                <i class="fas fa-thumbs-up"></i>
+                <img src="../assets/icons/done.svg" alt="Done Icon" width="30" />
             </button>
             <button class="todo__button delete">
-                <i class="fas fa-trash-alt"></i>
+                <img src="../assets/icons/delete.svg" alt="Delete Icon"  width="30" />
             </button>
         `;
 		todoArea.append(div);
