@@ -1,173 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Tourney:ital@0;1&display=swap');
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 1.3px;
-    line-height: 1.2;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Lato', sans-serif;
+	font-size: 1.1rem;
+	letter-spacing: 1.3px;
+	line-height: 1.2;
 }
 body {
-    overflow-x: hidden;
-    background: linear-gradient(to top right, #845EC2, #2C73D2, #0081CF, #0089BA, #008E9B, #008F7A) no-repeat center/cover;
+	overflow-x: hidden;
+	background: linear-gradient(
+			to top right,
+			#845ec2,
+			#2c73d2,
+			#0081cf,
+			#0089ba,
+			#008e9b,
+			#008f7a
+		)
+		no-repeat center/cover;
 }
 
 footer {
-    height: 7vh;
-    background-color: rgb(10, 10, 10, 0.9);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	height: 7vh;
+	background-color: rgb(10, 10, 10, 0.9);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 small {
-    font-size: 0.6rem;
+	font-size: 0.6rem;
 }
 
 i {
-    font-size: 1.2rem;
-    pointer-events: none;
-    color: #008F7A;
+	font-size: 1.2rem;
+	pointer-events: none;
+	color: #008f7a;
 }
 
 .todo {
-    min-height: 93vh;
-    width: 93%;
-    max-width: 800px;
-    margin: auto;
+	min-height: 93vh;
+	width: 93%;
+	max-width: 800px;
+	margin: auto;
 }
 
 .todo__header {
-    color: white;
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 300;
-    padding: 1rem 0;
+	color: white;
+	text-align: center;
+	font-size: 3rem;
+	font-weight: 300;
+	padding: 1rem 0;
 }
 
-.todo__form, .todo__list {
-    min-width: 50px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    border: none;
+.todo__form,
+.todo__list {
+	min-width: 50px;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	border: none;
 }
 
 .todo__filter {
-    display: block;
-    min-width: 50px;
-    font-size: 0.8rem;
-    margin: 0.5rem auto 0 0;
-    padding: 3px;
-    text-transform: uppercase;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    border-radius: 4px;
-    color: white;
-    background-color: teal;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-} 
-
-button {
-    border: 1px solid #444;
-    width: 50px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
+	display: block;
+	min-width: 50px;
+	font-size: 0.8rem;
+	margin: 0.5rem auto 0 0;
+	padding: 3px;
+	text-transform: uppercase;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	border-radius: 4px;
+	color: white;
+	background-color: teal;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-button, 
+button {
+	border: 1px solid #444;
+	width: 50px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+button,
 .todo__text {
-    padding: 4px;
+	padding: 4px;
 }
 
 .todo__input {
-    padding: 4px 12px;
-    border: 1px solid teal;
-    border-right: none;
-    border-radius: 3px 0px 0px 3px;
-    min-width: 50px;
+	padding: 4px 12px;
+	border: 1px solid teal;
+	border-right: none;
+	border-radius: 3px 0px 0px 3px;
+	min-width: 50px;
 }
 
 .todo__submit {
-    padding: 4px;
-    width: 70px;
-    background-color: white;
-    border: 1px solid teal;
-    border-left: 3px solid teal;
-    border-radius: 0px 3px 3px 0px;
+	padding: 4px;
+	width: 70px;
+	background-color: white;
+	border: 1px solid teal;
+	border-left: 3px solid teal;
+	border-radius: 0px 3px 3px 0px;
 }
-    .todo__submit:hover {
-        transition: all 300ms ease;
-        padding: 3.3px 3.5px;
-        border: 1px solid white;
-        background-color: teal;
-    }
-    .todo__submit:hover i {
-        transition: all 600ms ease;
-        color: white;
-    }
+.todo__submit:hover {
+	transition: all 300ms ease;
+	padding: 3.3px 3.5px;
+	border: 1px solid white;
+	background-color: teal;
+}
+.todo__submit:hover i {
+	transition: all 600ms ease;
+	color: white;
+}
 
 .todo__area {
-    margin: 2rem 0 0;
+	margin: 2rem 0 0;
 }
 
 .todo__list {
-    background-color: whitesmoke;
-    margin-bottom: 10px;
-    padding: 2px 2px 2px 6px;
-    border-radius: 4px;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
-    transition: all 500ms ease;
+	background-color: whitesmoke;
+	margin-bottom: 10px;
+	padding: 2px 2px 2px 6px;
+	border-radius: 4px;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
+	transition: all 500ms ease;
 }
 
-.todo__input, .todo__text {
-    flex: 1;
-    outline: none;
+.todo__input,
+.todo__text {
+	flex: 1;
+	outline: none;
 }
 
 .todo__text {
-    text-transform: uppercase;
+	text-transform: uppercase;
 }
 
 .todo__button {
-    margin-left: 3px;
-    width: 38px;
+	margin-left: 3px;
+	width: 38px;
 }
 
 .todo__button:hover {
-    transform: scale(1.03);
+	transform: scale(1.03);
 }
 
 .todo__list .todo__button.done {
-    background-color: #008F7A;
+	background-color: #008f7a;
 }
 
 .todo__list .todo__button.done i {
-    color: white;
+	color: white;
 }
 
 .todo__list .todo__button.delete {
-    background-color: crimson;
+	background-color: crimson;
 }
 
 .todo__list .todo__button.delete i {
-    color: whitesmoke;
+	color: whitesmoke;
 }
 
 .move {
-    animation: move 1000ms forwards ease-in-out, shrink 700ms 800ms forwards ease-in-out;
+	animation:
+		move 1000ms forwards ease-in-out,
+		shrink 700ms 800ms forwards ease-in-out;
 }
 
 @keyframes move {
-    0% { transform: translateX(-1%); }
-    25% { transform: translateX(-3%); }
-    50% { transform: translateX(15%); }
-    100% { transform: translateX(-50%); opacity: 0; }
+	0% {
+		transform: translateX(-1%);
+	}
+	25% {
+		transform: translateX(-3%);
+	}
+	50% {
+		transform: translateX(15%);
+	}
+	100% {
+		transform: translateX(-50%);
+		opacity: 0;
+	}
 }
 @keyframes shrink {
-    0% { height: 38.4px; padding: 2px 2px 2px 6px; margin-bottom: 10px; }
-    100% { height: 0px; padding: 0px 0px 0px 0px; margin-bottom: 0px; }
+	0% {
+		height: 38.4px;
+		padding: 2px 2px 2px 6px;
+		margin-bottom: 10px;
+	}
+	100% {
+		height: 0px;
+		padding: 0px 0px 0px 0px;
+		margin-bottom: 0px;
+	}
 }
