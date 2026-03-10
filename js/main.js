@@ -1,95 +1,110 @@
-$(document).ready(function () {
-	const todoInput = document.querySelector('.todo__input');
-	const todoSubmit = document.querySelector('.todo__submit');
-	const todoArea = document.querySelector('.todo__area');
-	const todoFilter = document.querySelector('.todo__filter');
+const ELEMENTS = {
+	FORM_INPUT: document.querySelector('.form__input'),
+	FORM_SUBMIT: document.querySelector('.form__submit'),
+	GOALS_LIST: document.querySelector('.goals-list'),
+	FILTER_OPTIONS: document.querySelector('.filter__options'),
+};
 
-	todoSubmit.addEventListener('click', list);
-	todoInput.addEventListener('keyup', listByEnter);
-	todoFilter.addEventListener('change', filter);
+function addGoal() {
+	if (ELEMENTS.FORM_INPUT.value === '') return;
 
-	function listByEnter(event) {
-		if (event.keyCode === 13) list();
-	}
+	const newGoal = `
+		<article class="goal progress animate__animated animate__rotateInDownRight">
+            <header class="button__group">
+				<button class="button--achieved">
+					<span>achieved</span>
+				</button>
+				<button class="button--dismiss">
+					<span>dismiss</span>
+				</button>
+			</header>
+			<footer>
+				<p class="goal__text">${ELEMENTS.FORM_INPUT.value}</p>
+			</footer>
+		</article>`;
 
-	function list(event) {
-		if (todoInput.value === '') return;
-		const div = document.createElement('div');
-		div.className =
-			'todo__list all working animate__animated animate__rotateInDownRight';
-		div.innerHTML = `
-            <p class="todo__text">${todoInput.value}</p>
-            <button class="todo__button done">
-                <img src="../assets/icons/done.svg" alt="Done Icon" width="30" />
-            </button>
-            <button class="todo__button delete">
-                <img src="../assets/icons/delete.svg" alt="Delete Icon"  width="30" />
-            </button>
-        `;
-		todoArea.append(div);
-		todoInput.value = '';
-	}
+	ELEMENTS.GOALS_LIST.insertAdjacentHTML('beforeend', newGoal);
+	ELEMENTS.FORM_INPUT.value = '';
+}
 
-	function filter(event) {
-		const keyword = event.target.value;
-		const allList = document.querySelectorAll('.all');
-		/* 
-            Make all list to display none first.
-        */
-		allList.forEach((list) => (list.style.display = 'none'));
+function filterGoals(event) {
+	const filterStatus = event.target.value;
+	const allGoals = document.querySelectorAll('.goal');
 
-		allList.forEach((todo) => {
-			if (todo.classList.contains(keyword)) {
-				/*
-                    Display none whatever is selected first for the animation effect.
-                */
-				todo.style.display = 'none';
-				todo.classList.replace(
-					'animate__rotateInDownRight',
-					'animate__rubberBand',
-				);
-				/*
-                    After 50 miliseconds make the selected list display flex with animation.
-                */
-				setTimeout(() => (todo.style.display = 'flex'), 50);
-			}
-		});
-	}
+	allGoals.forEach((goal) => {
+		// Make all goals display none first. This is for the animation.
+		goal.style.display = 'none';
+		goal.classList.remove(
+			'animate__rotateInDownRight',
+			'animate__rubberBand',
+		);
 
-	/* 
-        delete button
-    */
-	$(document).on('click', 'button.delete', function () {
-		this.parentElement.classList.add('move');
-		/*
-            This event listener will run after the first animation of the same element ends.
-        */
-		this.parentElement.addEventListener('animationend', function () {
-			setTimeout(() => this.remove(), 1000);
-		});
-	});
-
-	/*
-        complete button
-    */
-	$(document).on('click', 'button.done', function (e) {
-		if (e.target.isChecked == null) e.target.isChecked = false;
-		if (e.target.isChecked == false) {
-			$(this).prev().css({
-				'text-decoration': 'line-through',
-				color: 'rgba(20, 20, 20, 0.5)',
-			});
-			$(this).parent().css('background', 'rgba(245, 245, 245, 0.6)');
-			$(this).parent().removeClass('working').addClass('complete');
-			e.target.isChecked = true;
-		} else {
-			$(this).prev().css({
-				'text-decoration': 'none',
-				color: 'rgba(20, 20, 20, 1)',
-			});
-			$(this).parent().css('background', 'rgba(245, 245, 245, 1)');
-			$(this).parent().removeClass('complete').addClass('working');
-			e.target.isChecked = false;
+		if (goal.classList.contains(filterStatus)) {
+			setTimeout(() => {
+				goal.style.display = 'block';
+				goal.classList.add('animate__rubberBand');
+			}, 100);
 		}
 	});
+}
+
+async function dismissGoal(dismissButton) {
+	dismissButton.setAttribute('disabled', 'true');
+	const goal = dismissButton.parentElement.parentElement;
+
+	await goal.animate(
+		[
+			{ transform: 'translateX(-1%)', offset: 0 },
+			{ transform: 'translateX(-3%)', offset: 0.3 },
+			{ transform: 'translateX(15%)', offset: 0.5 },
+			{ transform: 'translateX(-80%)', opacity: 0, offset: 1 },
+		],
+		{
+			duration: 1000,
+			easing: 'ease-in-out',
+			fill: 'forwards',
+		},
+	).finished;
+
+	await goal.animate([{ height: '100px' }, { height: '0px', margin: 0 }], {
+		duration: 700,
+		delay: 300,
+		easing: 'ease-in-out',
+		fill: 'forwards',
+	}).finished;
+
+	goal.remove();
+}
+
+function achieveGoal(achievedButton) {
+	const goal = achievedButton.parentElement.parentElement;
+
+	if (goal.classList.contains('progress')) {
+		goal.classList.replace('progress', 'achieved');
+		return;
+	}
+
+	goal.classList.replace('achieved', 'progress');
+}
+
+ELEMENTS.GOALS_LIST.addEventListener('click', (event) => {
+	if (event.target.classList.contains('button--achieved')) {
+		achieveGoal(event.target);
+	}
+
+	if (event.target.classList.contains('button--dismiss')) {
+		dismissGoal(event.target);
+	}
 });
+
+ELEMENTS.FORM_SUBMIT.addEventListener('click', () => {
+	addGoal();
+});
+
+ELEMENTS.FORM_INPUT.addEventListener('keyup', (event) => {
+	if (event.key !== 'Enter') return;
+
+	addGoal();
+});
+
+ELEMENTS.FILTER_OPTIONS.addEventListener('change', filterGoals);

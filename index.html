@@ -4,8 +4,6 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script defer src="./js/main.js"></script>
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -16,6 +14,7 @@
 			href="./assets/icons/favicon.png"
 			type="image/x-icon"
 		/>
+		<script defer src="./js/main.js"></script>
 		<title>GoalHub</title>
 	</head>
 	<body>
@@ -38,27 +37,14 @@
 
 			<section class="filter">
 				<select class="filter__options">
-					<option value="all" selected>show all</option>
-					<option value="complete">completed</option>
-					<option value="working">in progress</option>
+					<option value="goal" selected>show all</option>
+					<option value="achieved">achieved</option>
+					<option value="progress">in progress</option>
 				</select>
 			</section>
 
-			<section class="goals_list">
+			<section class="goals-list">
 				<article class="goal--empty">Your Goals Will Go Here</article>
-				<article class="goal">
-					<header class="button__group">
-						<button class="button--done">
-							<span>achieved</span>
-						</button>
-						<button class="button--delete">
-							<span>dismiss</span>
-						</button>
-					</header>
-					<footer>
-						<p class="goal__text">I want to</p>
-					</footer>
-				</article>
 			</section>
 		</main>
 
